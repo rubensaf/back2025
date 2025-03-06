@@ -1,0 +1,64 @@
+GET http://localhost:3000/index
+###
+GET http://localhost:3000/tracks/
+###
+GET http://localhost:3000/storages
+###
+GET http://localhost:3000/users
+###
+POST http://localhost:3000/tracks
+Content-Type: application/json
+api_key: prueba_api_random
+
+{"title": "NUEVO",
+  "artist": "Eminem",
+  "album": "The Marshall Mathers LP",
+  "genre": "Hip-Hop",
+  "releaseDate": "2000-05-23",
+  "duration": 404,
+  "falso": "ejemplo"  
+  }
+
+  //la ultima es para confirmar que no se postee
+###
+POST http://localhost:3000/storage HTTP/1.1
+Content-Type: multipart/form-data; boundary=boundary123
+
+--boundary123
+Content-Disposition: form-data; name="image"; filename="bici_lago.jpg"
+Content-Type: image/jpeg
+
+< ./bici_lago.jpg
+--boundary123--
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+api_key: prueba_api_random
+
+{
+  "name": "Juan Pérez",
+  "age": 30,
+  "email": "juan.perez@example.com",
+  "password": "123456",
+  "role": "admin",
+  "extra_field": "no_debe_guardarse"
+}
+###
+GET http://localhost:3000/tracks/67b5b193ad9a249c910ff385
+###
+
+DELETE http://localhost:3000/tracks
+
+
+###
+ POST http://localhost:3000/auth/register
+Content-Type: application/json
+api_key: prueba_api_random
+
+{
+  "name": "Lopez",
+  "age": 25,
+  "email": "papa@gmail.com",
+  "password": "123567843110"
+}
